@@ -3,11 +3,14 @@ window.addEventListener("load", function () {
         response.json().then(function (astronauts) {
             console.log(astronauts);
             astronauts = mergeSort(astronauts);
-            console.log(astronauts);
             const div = document.getElementById("container");
             let i = 2;
             for (i = 0; i < astronauts.length; i++) {
                 let astronautClass = "astronaut" + String(i + 1);
+                let classIsActive = "";
+                if (astronauts[i].active === true) {
+                    classIsActive = 'class="isActive"';
+                }
                 // Add HTML that includes the JSON data
                 div.innerHTML += `
 <div class="astronaut" astronautClass="${astronautClass}">
@@ -15,7 +18,7 @@ window.addEventListener("load", function () {
       <h3>${astronauts[i].firstName} ${astronauts[i].lastName}</h3>
       <ul>
          <li>Hours in space: ${astronauts[i].hoursInSpace}</li>
-         <li>Active: ${astronauts[i].active}</li>
+         <li ${classIsActive}>Active: ${astronauts[i].active}</li>
          <li>Skills: ${astronauts[i].skills}</li>
       </ul>
    </div>
@@ -29,8 +32,8 @@ window.addEventListener("load", function () {
 <div class="bonusMissions">
     <h3>Bonus Missions</h3>
     <ol>
-        <li>Display the astronauts sorted from most to least time in space.</li>
-        <li>Make the "Active: true" text green, for astronauts that are still active (active is true).</li>
+        <li>Display the astronauts sorted from most to least time in space. ✅</li>
+        <li>Make the "Active: true" text green, for astronauts that are still active (active is true). ✅</li>
         <li>Add a count of astronauts to the page.</li>
     </ol>
 </div>
