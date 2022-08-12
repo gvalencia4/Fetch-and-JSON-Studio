@@ -7,18 +7,14 @@ window.addEventListener("load", function () {
             let i = 2;
             for (i = 0; i < astronauts.length; i++) {
                 let astronautClass = "astronaut" + String(i + 1);
-                let classIsActive = "";
-                if (astronauts[i].active === true) {
-                    classIsActive = 'class="isActive"';
-                }
-                // Add HTML that includes the JSON data
+                // Add HTML that includes the JSON data for each astronaut
                 div.innerHTML += `
 <div class="astronaut" astronautClass="${astronautClass}">
    <div class="bio">
       <h3>${astronauts[i].firstName} ${astronauts[i].lastName}</h3>
       <ul>
          <li>Hours in space: ${astronauts[i].hoursInSpace}</li>
-         <li ${classIsActive}>Active: ${astronauts[i].active}</li>
+         <li>Active: <span class="${astronauts[i].active ? "active" : "inactive"}">${astronauts[i].active}</span>
          <li>Skills: ${astronauts[i].skills}</li>
       </ul>
    </div>
